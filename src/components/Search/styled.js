@@ -18,6 +18,7 @@ const List = styled.div`
   top: 100%;
   left: 0;
   right: 0;
+  border: 1px solid ${p => p.theme.color.border};
 `
 
 const ListItem = styled.div`

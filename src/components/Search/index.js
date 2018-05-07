@@ -11,16 +11,28 @@ import {
 } from './styled'
 
 const Search = props => {
-  const { query, onChange, onKeyPress, onBlur, matchingItems, listVisible, limit } = props
+  const {
+    query,
+    onChange,
+    onFocus,
+    onKeyPress,
+    onBlur,
+    matchingItems,
+    listVisible,
+    limit
+    } = props
   return (
-    <Container onBlur={onBlur}>
+    <Container
+      onBlur={onBlur}
+      onFocus={onFocus}
+    >
       <Input
         value={query}
         onChange={onChange}
         onKeyPress={onKeyPress}
       />
       {
-        listVisible
+        listVisible && query
         ? <List>
           {
             matchingItems.slice(0, limit).map((item, i) => (

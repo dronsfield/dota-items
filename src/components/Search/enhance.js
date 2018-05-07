@@ -37,6 +37,7 @@ export default compose(
   }),
   withState('query', 'setQuery', ''),
   withState('listVisible', 'setListVisible', false),
+  withState('selectedItem', 'setSelectedItem', 0),
   withPropsOnChange(
     ['query', 'items', 'searchableKeys'],
     ({ query, items, searchableKeys }) => {
@@ -71,8 +72,12 @@ export default compose(
         onSubmit(matchingItems[0])
       }
     },
-    onBlur: ({ setListVisible }) => () => {
-      setListVisible(false)
+    // onBlur: ({ setListVisible }) => e => {
+    //   console.log(e.target, e.relatedTarget)
+    //   setListVisible(false)
+    // },
+    onFocus: ({ setListVisible }) => () => {
+      setListVisible(true)
     }
   }),
   pure
